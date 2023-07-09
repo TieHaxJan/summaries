@@ -1,1 +1,183 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Summaries</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles for Folder Icons and Document Icons */
+    .folder-icon,
+    .document-icon {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+
+    .info-icon {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+
+    .folder-icon {
+      background-image: url("icons/folder-256.png");
+    }
+
+    .document-icon {
+      background-image: url("icons/document-256.png");
+    }
+
+    .info-icon {
+      background-image: url("icons/info-5-256.png");
+    }
+
+    /* Custom Styles for Hover Effect */
+    .folder-summary:hover,
+    .summary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    /* Custom Styles for Information Box */
+    .information-box {
+      border: 2px solid #fff;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Custom Styles for Footer */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px;
+      background-color: inherit;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Summaries by Jan Schulz-Nigmann</h1>
+
+    <div class="information-box">
+      <div class="info-icon"></div>
+      <div class="flex flex-col ml-2 w-full">
+      <p class="ml-2 flex">Alle meine Zusammenfassungen sind auf Deutsch, ich gebe keine Garantie, dass die Zusammenfassungen richtig und komplett sind.</p>
+      <hr class="border-gray-700 my-2 w-full ">
+      <p class="ml-2 flex">
+        Also visit the extensive Summaries written by Fabian Damken.
+        Link: <a href="https://fabian.damken.net" target="_blank" class="text-blue-300">https://fabian.damken.net</a>
+      </p>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="w-full mb-4">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs3')">
+          <div class="flex items-center">
+            <div class="folder-icon"></div>
+            <h2 class="text-lg font-bold ml-2">3rd Semester</h2>
+          </div>
+          <div class="hidden" id="fs3">
+            <hr class="border-gray-700 my-2">
+            <ul class="pl-6">
+              <a href="FS3/AER/JSN_AER_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Architekturen und Entwurf von Rechnersystemen</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full mb-4">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs4')">
+          <div class="flex items-center">
+            <div class="folder-icon"></div>
+            <h2 class="text-lg font-bold ml-2">4th Semester</h2>
+          </div>
+          <div class="hidden" id="fs4">
+            <hr class="border-gray-700 my-2">
+            <ul class="pl-6">
+              <a href="FS4/FSME/JSN_FMSE_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Formale Methoden im Softwareentwurf</li>
+              </a>
+              <a href="FS4/InfMan/JSN_InfMan_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Informationsmanagement</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full mb-4">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs5')">
+          <div class="flex items-center">
+            <div class="folder-icon"></div>
+            <h2 class="text-lg font-bold ml-2">5th Semester</h2>
+          </div>
+          <div class="hidden" id="fs5">
+            <hr class="border-gray-700 my-2">
+            <ul class="pl-6">
+              <a href="FS5/BS/JSN_BS_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Betriebssysteme</li>
+              </a>
+              <a href="FS5/VC/JSN_VC_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Visual Computing</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full mb-4">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('elective')">
+          <div class="flex items-center">
+            <div class="folder-icon"></div>
+            <h2 class="text-lg font-bold ml-2">Elective</h2>
+          </div>
+          <div class="hidden" id="elective">
+            <hr class="border-gray-700 my-2">
+            <ul class="pl-6">
+              <a href="Elective/SGV/JSN_SGV_Summary.pdf" target="_blank">
+                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Serious Games Vorlesung</li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more topic folders here -->
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    Webpage generated by ChatGPT :D | Icons by <a href="https://icons8.com" target="_blank" class="text-blue-300">Icons8</a>
+  </footer>
+
+  <script>
+    function toggleSummary(topicId) {
+      const summaryDiv = document.getElementById(topicId);
+      summaryDiv.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>
