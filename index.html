@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PDF Summaries</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/icons/document-256.png">
   <style>
     /* Custom Styles for Folder Icons and Document Icons */
     .folder-icon,
@@ -81,18 +82,22 @@
       <div class="flex flex-col ml-2 w-full">
         <p class="ml-2 flex">Alle meine Zusammenfassungen sind auf Deutsch, ich gebe keine Garantie, dass die
           Zusammenfassungen richtig und komplett sind.</p>
+        <p class="ml-2 flex">Die Zusammenfassungen sind entweder aus meinem Bachelor (PO2015) oder meinem Master
+          (Computer Science PO
+          2023).</p>
         <hr class="border-gray-700 my-2 w-full ">
         <p class="ml-2 flex">
           Also visit the extensive Summaries written by Fabian Damken.</p>
         <p class="ml-2 flex">
-          Link: <a href="https://fabian.damken.net" target="_blank" class="text-blue-300">https://fabian.damken.net</a>
+          <a>Link:&nbsp;</a><a href="https://fabian.damken.net" target="_blank"
+            class="text-blue-300">https://fabian.damken.net</a>
         </p>
       </div>
     </div>
 
     <div class="flex flex-col">
       <div class="w-full mb-4">
-        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs3')">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs3', event)">
           <div class="flex items-center">
             <div class="folder-icon"></div>
             <h2 class="text-lg font-bold ml-2">3rd Semester</h2>
@@ -110,7 +115,7 @@
       </div>
 
       <div class="w-full mb-4">
-        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs4')">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs4', event)">
           <div class="flex items-center">
             <div class="folder-icon"></div>
             <h2 class="text-lg font-bold ml-2">4th Semester</h2>
@@ -132,7 +137,7 @@
       </div>
 
       <div class="w-full mb-4">
-        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs5')">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('fs5', event)">
           <div class="flex items-center">
             <div class="folder-icon"></div>
             <h2 class="text-lg font-bold ml-2">5th Semester</h2>
@@ -154,7 +159,7 @@
       </div>
 
       <div class="w-full mb-4">
-        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('elective')">
+        <div class="bg-gray-800 rounded-lg shadow p-4 folder-summary" onclick="toggleSummary('elective', event)">
           <div class="flex items-center">
             <div class="folder-icon"></div>
             <h2 class="text-lg font-bold ml-2">Elective</h2>
@@ -162,30 +167,83 @@
           <div class="hidden" id="elective">
             <hr class="border-gray-700 my-2">
             <ul class="pl-6">
-              <a href="Elective/SGV/JSN_SGV_Summary.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Serious
-                  Games Vorlesung</li>
-              </a>
-              <a href="Elective/AmI/JSN_AmI_Summary.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Ambient
-                  Intelligence</li>
-              </a>
-              <a href="Elective/SDMS/JSN_SDMS_Summary.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Scalable
-                  Data Management Systems</li>
-              </a>
-              <a href="Elective/GDV1/JSN_GDV1_Summary.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Graphische
-                  Datenverarbeitung 1</li>
-              </a>
-              <a href="Elective/IVVA/JSN_IVVA_Summary.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span
-                    class="document-icon mr-2"></span>Informationsvisualisierung und Visual Analytics</li>
-              </a>
-              <a href="Elective/QC/Klausurvorbereitung.pdf" target="_blank">
-                <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Quantum
-                  Computing Cheat Sheet</li>
-              </a>
+              <li class="p-2 rounded-lg flex items-center folder-summary" onclick="toggleSummary('systems', event)">
+                <div class="folder-icon mr-2"></div>Systems
+              </li>
+              <div class="hidden pl-4" id="systems">
+                <ul>
+                  <a href="Elective/QC/Klausurvorbereitung.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Quantum
+                      Computing Cheat Sheet</li>
+                  </a>
+                </ul>
+              </div>
+
+              <li class="p-2 rounded-lg flex items-center folder-summary" onclick="toggleSummary('visual', event)">
+                <div class="folder-icon mr-2"></div>Visual
+              </li>
+              <div class="hidden pl-4" id="visual">
+                <ul>
+                  <a href="Elective/GDV1/JSN_GDV1_Summary.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span
+                        class="document-icon mr-2"></span>Graphische
+                      Datenverarbeitung 1</li>
+                  </a>
+                  <a href="Elective/IVVA/JSN_IVVA_Summary.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span
+                        class="document-icon mr-2"></span>Informationsvisualisierung und Visual Analytics</li>
+                  </a>
+                  <a href="Elective/AmI/JSN_AmI_Summary.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Ambient
+                      Intelligence</li>
+                  </a>
+                  <a href="Elective/SGV/JSN_SGV_Summary.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span class="document-icon mr-2"></span>Serious
+                      Games Vorlesung</li>
+                  </a>
+                </ul>
+              </div>
+
+              <li class="p-2 rounded-lg flex items-center folder-summary"
+                onclick="toggleSummary('info_processing', event)">
+                <div class="folder-icon mr-2"></div>Info Processing
+              </li>
+              <div class="hidden pl-4" id="info_processing">
+                <ul>
+                  <a href="Elective/SDMS/JSN_SDMS_Summary.pdf" target="_blank">
+                    <li class="p-2 rounded-lg flex items-center summary"><span
+                        class="document-icon mr-2"></span>Scalable
+                      Data Management Systems</li>
+                  </a>
+                </ul>
+              </div>
+
+              <!--<li class="p-2 rounded-lg flex items-center folder-summary" onclick="toggleSummary('engineering', event)">
+                <div class="folder-icon mr-2"></div>Engineering
+              </li>
+              <div class="hidden pl-4" id="engineering">
+                <ul>
+
+                </ul>
+              </div>
+
+              <li class="p-2 rounded-lg flex items-center folder-summary" onclick="toggleSummary('networks', event)">
+                <div class="folder-icon mr-2"></div>Networks
+              </li>
+              <div class="hidden pl-4" id="networks">
+                <ul>
+
+                </ul>
+              </div>
+
+              <li class="p-2 rounded-lg flex items-center folder-summary" onclick="toggleSummary('itsec', event)">
+                <div class="folder-icon mr-2"></div>IT Security
+              </li>
+              <div class="hidden pl-4" id="itsec">
+                <ul>
+
+                </ul>
+              </div>-->
             </ul>
           </div>
         </div>
@@ -202,9 +260,14 @@
   </footer>
 
   <script>
-    function toggleSummary(topicId) {
-      const summaryDiv = document.getElementById(topicId);
-      summaryDiv.classList.toggle('hidden');
+    function toggleSummary(id, event) {
+      event.stopPropagation();
+      var element = document.getElementById(id);
+      if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+      } else {
+        element.classList.add('hidden');
+      }
     }
   </script>
 </body>
