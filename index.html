@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PDF Summaries</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/icons/document-256.png">
+  <link rel="icon" type="image/x-icon" href="/icons/summary-52.png">
   <style>
     /* Custom Styles for Folder Icons and Document Icons */
     .folder-icon,
@@ -70,12 +70,30 @@
       color: rgba(255, 255, 255, 0.2);
       font-size: 14px;
     }
+
+    .blog-link {
+      position: relative;
+      top: 20px;
+      right: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .blog-link:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 
 <body class="bg-gray-900 text-white">
   <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Summaries by Jan Schulz-Nigmann</h1>
+    <div class="flex justify-between align-middle">
+      <h1 class="text-2xl font-bold mb-4">Summaries by Jan Schulz-Nigmann</h1>
+      <a href="blog.html" class="rounded-lg mb-4 text-white hover:bg-gray-800 px-2 pt-1 hover:shadow"><u>Blog</u></a>
+    </div>
 
     <div class="information-box">
       <div class="info-icon"></div>
