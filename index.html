@@ -89,7 +89,7 @@
 </head>
 
 <body class="bg-gray-900 text-white">
-  <div class="container mx-auto p-4 px-40 mb-6">
+  <div class="container mx-auto p-4 sm:px-40 mb-6">
     <div class="flex justify-between align-middle">
       <h1 class="text-2xl font-bold mb-4">Summaries by Jan Schulz-Nigmann</h1>
       <a href="blog.html" class="rounded-lg mb-4 text-white hover:bg-gray-800 px-2 pt-1 hover:shadow"><u>Blog</u></a>
@@ -294,12 +294,23 @@
     function toggleSummary(id, event) {
       event.stopPropagation();
       var element = document.getElementById(id);
-      if (element.classList.contains('hidden')) {
-        element.classList.remove('hidden');
-      } else {
-        element.classList.add('hidden');
+      if (element) {
+        element.classList.toggle('hidden');
       }
     }
+
+    function openFolderFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const folderToOpen = params.get("open");
+      if (folderToOpen) {
+        const element = document.getElementById(folderToOpen);
+        if (element) {
+          element.classList.remove('hidden');
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", openFolderFromURL);
   </script>
 </body>
 
