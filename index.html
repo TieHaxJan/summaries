@@ -307,10 +307,8 @@
       const folderToOpen = params.get("open");
       if (folderToOpen) {
         const subfolders = folderToOpen.split("/");
-        let currentPath = "";
         subfolders.forEach(folder => {
-          currentPath = currentPath ? `${currentPath}/${folder}` : folder;
-          const element = document.getElementById(currentPath);
+          const element = document.getElementById(folder);
           if (element) {
             element.classList.remove('hidden');
           }
